@@ -11,7 +11,7 @@
     </head>
     <body>
 
-        <div><a href="/hello">test</a><h1 style="text-align: center;" id="localTarget"></h1></div>
+        <div><h1 style="text-align: center;" id="localTarget"></h1></div>
 
 
         <div id="app"></div>
@@ -29,6 +29,7 @@
 
 <script>
 
+ // Init the map at the first loading.
  const init = () => {
   const x = document.getElementById("localTarget");
    
@@ -45,8 +46,7 @@
       
       
       function showPosition(position) {
-        x.innerHTML = "Latitude: " + position.coords.latitude +
-        "<br>Longitude: " + position.coords.longitude;
+        x.innerHTML = "Latitude: " + position.coords.latitude;
    
          mymap = L.map('mapid').setView([position.coords.latitude, position.coords.longitude], 13);
    

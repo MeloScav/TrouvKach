@@ -1,4 +1,4 @@
-// Some error to find a fix
+// Some errors to fix
 
 /* eslint-disable react/no-multi-comp*/
 
@@ -9,7 +9,7 @@ const x = document.querySelector("#localTarget");
 const L = require("leaflet");
 
 function showPosition(position) {
-    x.innerHTML = `Latitude: ${position.coords.latitude}<br>Longitude: ${position.coords.longitude}`;
+    x.innerHTML = `Latitude: ${position.coords.latitude}`;
 
     const mymap = L.map("mapid").setView(
         [position.coords.latitude, position.coords.longitude],
@@ -76,7 +76,24 @@ function Main(props) {
 
     // display ATM.
     if (showAtm) {
-        return <h1>{"Modal for the ATM"}</h1>;
+        return (
+            <section id={"modalBox"}>
+                <img
+                    src={
+                        "https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.wowunderwear.nl%2Fsites%2Fwowunderwear%2Ffiles%2F20131119212638_1_Belfius-Bank-logo-300px.png&f=1&nofb=1"
+                    }
+                    id={"modalImg"}
+                />
+                <p>{"Bank name : "}</p>
+                <p>{"Country name : "}</p>
+                <p>{"Url adress : "}</p>
+                <p>{"State : "}</p>
+
+                <button type={"button"}> {"Edit ATM"}</button>
+
+                <button type={"button"}> {"Delete  ATM"}</button>
+            </section>
+        );
     }
 
     if (!showAtm) {
@@ -91,7 +108,7 @@ function Main(props) {
 
 function AtmButton(props) {
     return (
-        <button type={"button"} onClick={props.onClick}>
+        <button id={"atmBtn"} type={"button"} onClick={props.onClick}>
             {"ATM"}
         </button>
     );
@@ -99,7 +116,7 @@ function AtmButton(props) {
 
 function MapButton(props) {
     return (
-        <button type={"button"} onClick={props.onClick}>
+        <button id={"mapBtn"} type={"button"} onClick={props.onClick}>
             {"MAP"}
         </button>
     );
