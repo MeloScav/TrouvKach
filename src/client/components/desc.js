@@ -9,7 +9,7 @@
 import * as React from "react";
 
 const HelloWorld = () => (
-    <div>
+    <div id={"mapid"}>
         <h1>{"Hello, world!"}</h1>
         <hr />
         <small>{"becode/trouvkach"}</small>

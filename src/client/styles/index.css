@@ -1,0 +1,18 @@
+body
+{
+    height: 100vh;
+    margin: 0px;
+    overflow: hidden;
+}
+
+#localTarget
+{
+    border-bottom: 1px solid black;
+    height: 10vh;
+}
+#app
+{
+    border-bottom: 1px solid black;
+    height: 80vh;
+}
+
