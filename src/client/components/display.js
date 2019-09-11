@@ -29,14 +29,14 @@ class Display extends React.Component {
 
         return (
             <div>
-                <Greeting showAtm={showAtm} />
+                <Main showAtm={showAtm} />
                 {button}
             </div>
         );
     }
 }
 
-function Greeting(props) {
+function Main(props) {
     const showAtm = props.showAtm;
 
     // display ATM.
