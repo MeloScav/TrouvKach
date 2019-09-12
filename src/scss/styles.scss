@@ -1,0 +1,25 @@
+body {
+    margin: 0px;
+    background-color: rebeccapurple;
+}
+
+.leaflet-container {
+    height: 100vh;
+}
+
+.user {
+    animation: blink 3s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

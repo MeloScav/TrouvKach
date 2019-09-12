@@ -6,9 +6,10 @@
  * started at 06/09/2019
  */
 
+import "../scss/styles.scss";
+
 import * as React from "react";
 import ReactDOM from "react-dom";
+import ReactMap from "./components/react-map";
 
-import HelloWorld from "./components/hello";
-
-ReactDOM.render(<HelloWorld />, document.querySelector("#app"));
+ReactDOM.render(<ReactMap />, document.querySelector("#app"));
