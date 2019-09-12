@@ -33,9 +33,9 @@ const url = "mongodb://dev:dev@mongo:27017";
 MongoClient.connect(url, (err, client) => {
     assert.equal(null, err);
 
-    const db = client.db("trouvkash");
-    const terminals = db.collection("terminals");
-    const banks = db.collection("banks");
-    console.log(banks.find());
+    //const db = client.db("trouvkash");
+    // const terminals = db.collection("terminals");
+    // const banks = db.collection("banks");
+
     client.close();
 });
