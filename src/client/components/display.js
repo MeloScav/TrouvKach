@@ -28,9 +28,9 @@ function showPosition(position) {
         },
     ).addTo(mymap);
 
-    L.marker([51.5, -0.09])
+    L.marker([position.coords.latitude, position.coords.longitude])
         .addTo(mymap)
-        .bindPopup("A pretty CSS3 popup.<br> Easily customizable.")
+        .bindPopup("<button  onClick={props.onClick}> prout </button>")
         .openPopup();
 }
 
