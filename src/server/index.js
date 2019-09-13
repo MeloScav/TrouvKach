@@ -35,7 +35,15 @@ MongoClient.connect(url, (err, client) => {
 
     const db = client.db("trouvkash");
     const terminals = db.collection("terminals");
-    const banks = db.collection("banks");
-    console.log(banks.find());
+    console.log(
+        terminals
+            .find()
+            .limit(20)
+            .toArray((err, items) => {
+                client.close();
+                console.log(items);
+                console.log(err);
+            }),
+    );
     client.close();
 });
