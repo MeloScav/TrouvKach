@@ -13,6 +13,18 @@ const styleBody = {
     padding: 0,
     fontSize: "13px",
 };
+const containerButton = {
+    display: "flex",
+    justifyContent: "flex-end",
+};
+
+const styleButton = {
+    color: "#fff",
+    fontSize: "12px",
+    padding: "6px 5px 6px 5px",
+    borderRadius: "12px 0 12px 0",
+    backgroundColor: "#478bf9",
+};
 
 const ReactPopup = () => (
     <Marker position={position}>
@@ -23,8 +35,10 @@ const ReactPopup = () => (
                     <li>{"Informations"}</li>
                     <li>{"lalala"}</li>
                 </ul>
-                <div>
-                    <Button value={"see more"} />
+                <div style={containerButton}>
+                    <div>
+                        <Button style={styleButton} value={"see more"} />
+                    </div>
                 </div>
             </div>
         </Popup>
