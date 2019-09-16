@@ -1,11 +1,3 @@
-/* becodeorg/trouvkach
- *
- * /src/server/index.js - Server entry point
- *
- * coded by leny@BeCode
- * started at 06/09/2019
- */
-
 import express from "express";
 import path from "path";
 
@@ -15,10 +7,8 @@ const app = express();
 
 app.use(express.static(path.resolve(__dirname, "../../bin/client")));
 
-app.get("/hello", (req, res) => {
-    // eslint-disable-next-line no-console
-    console.log(`ℹ️  (${req.method.toUpperCase()}) ${req.url}`);
-    res.send("Hello, World!");
+app.get("/bank/:name", (req, res) => {
+    res.send(req.params.name);
 });
 
 app.listen(APP_PORT, () =>
