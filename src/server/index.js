@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import express from "express";
 import path from "path";
 
@@ -17,16 +18,13 @@ app.listen(APP_PORT, () =>
 );
 
 const MongoClient = require("mongodb").MongoClient;
-const assert = require("assert");
-const url = "mongodb://dev:dev@mongo:27017";
 
-MongoClient.connect(url, (err, client) => {
-    assert.equal(null, err);
-
-    const db = client.db("trouvkash");
-    const terminals = db.collection("terminals");
+const uri = "mongodb+srv://admin:admin@cash-dejic.gcp.mongodb.net/test2";
+const client = new MongoClient(uri, {useNewUrlParser: true});
+client.connect(() => {
+    const collection = client.db("test2").collection("Terminals");
     console.log(
-        terminals
+        collection
             .find()
             .limit(20)
             .toArray((err, items) => {
