@@ -1,5 +1,6 @@
 import * as React from "react";
 import {Marker, Popup} from "react-leaflet";
+import Button from "./button";
 
 const position = [50.6326, 5.5797];
 
@@ -23,9 +24,7 @@ const ReactPopup = () => (
                     <li>{"lalala"}</li>
                 </ul>
                 <div>
-                    <button type={"button"} className={"buttonPopup"}>
-                        {"see more"}
-                    </button>
+                    <Button value={"see more"} />
                 </div>
             </div>
         </Popup>
