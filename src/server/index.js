@@ -32,25 +32,20 @@ const url = "mongodb://dev:dev@mongo:27017";
 
 MongoClient.connect(url, (err, client) => {
     assert.equal(null, err);
-    // const db = client.db("trouvkash");
-    //const terminals = db.collection("terminals");
-    // const banks = db.collection("banks");
-    // eslint-disable-next-line no-console
 
-    console.log();
-    /*console.log(
+    const db = client.db("trouvkash");
+    const terminals = db.collection("terminals");
+    //const banks = db.collection("banks");
+    console.log(
         terminals
             .find()
             .limit(20)
             // eslint-disable-next-line no-shadow
             .toArray((err, items) => {
                 client.close();
-                // eslint-disable-next-line no-console
                 console.log(items);
-                // eslint-disable-next-line no-console
                 console.log(err);
             }),
     );
-*/
     client.close();
 });
