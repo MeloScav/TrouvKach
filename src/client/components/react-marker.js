@@ -1,11 +1,13 @@
 import * as React from "react";
-//import {Marker} from "react-leaflet";
+import {Marker} from "react-leaflet";
 import Reactpopup from "./react-popup";
+// Bruxelle
+//const position = [50.85045, 4.34878];
 
-//const position = [50.6328, 5.5799];
-const ReactMarker = () => (
-    <Reactpopup />
-    //<Marker position={position} title={"You are here."} />
+const ReactMarker = props => (
+    <Marker position={props.position} title={props.title}>
+        <Reactpopup />
+    </Marker>
 );
 
 export default ReactMarker;

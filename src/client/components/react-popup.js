@@ -1,8 +1,9 @@
 import * as React from "react";
-import {Marker, Popup} from "react-leaflet";
+import {Popup} from "react-leaflet";
 import Button from "./button";
+//import Modal from "./modal";
 
-const position = [50.6326, 5.5797];
+// const position = [50.6326, 5.5797];
 
 const styleTitle = {
     fontSize: "16px",
@@ -23,20 +24,18 @@ const styleButton = {
 };
 
 const ReactPopup = () => (
-    <Marker position={position}>
-        <Popup>
-            <div style={styleTitle}>{"Name Bank"}</div>
-            <div style={styleBody}>
-                <ul className={"listPopup"}>
-                    <li>{"Informations"}</li>
-                    <li>{"lalala"}</li>
-                </ul>
-                <div>
-                    <Button style={styleButton} value={"see more"} />
-                </div>
+    <Popup>
+        <div style={styleTitle}>{"Name Bank"}</div>
+        <div style={styleBody}>
+            <ul className={"listPopup"}>
+                <li>{"Informations"}</li>
+                <li>{"lalala"}</li>
+            </ul>
+            <div>
+                <Button style={styleButton} value={"see more"} />
             </div>
-        </Popup>
-    </Marker>
+        </div>
+    </Popup>
 );
 
 export default ReactPopup;

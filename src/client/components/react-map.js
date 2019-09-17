@@ -1,16 +1,12 @@
 import * as React from "react";
 import {Map, TileLayer} from "react-leaflet";
+import Modal from "./modal";
 // import ReactPopup from "./react-popup";
 import ReactMarker from "./react-marker";
-
+// LIEGE
 const position = [50.6326, 5.5797];
-
-//const tabPosition = [[50.6326, 5.5797], [60.6, 6.5], [55.4582, 4.2351]];
-/*const boucleP = () => {
-    for (let i = 0; i < tabPosition.length; i++) {
-        let element = tabPosition[i];
-    }
-};*/
+// Bruxelle
+const position2 = [50.85045, 4.34878];
 
 const ReactMap = () => (
     <div>
@@ -21,8 +17,10 @@ const ReactMap = () => (
                     'Map data &copy;, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
                 }
             />
-            <ReactMarker center={position} />
+            <ReactMarker position={position} title={"Liege"} />
+            <ReactMarker position={position2} title={"Bxl"} />
         </Map>
+        <Modal />
     </div>
 );
 
