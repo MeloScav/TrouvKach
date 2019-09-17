@@ -1,9 +1,7 @@
 import * as React from "react";
 import {Popup} from "react-leaflet";
 import Button from "./button";
-//import Modal from "./modal";
-
-// const position = [50.6326, 5.5797];
+import Modal from "./modal";
 
 const styleTitle = {
     fontSize: "16px",
@@ -23,19 +21,31 @@ const styleButton = {
     backgroundColor: "rgb(71,139,249)",
 };
 
-const ReactPopup = () => (
-    <Popup>
-        <div style={styleTitle}>{"Name Bank"}</div>
-        <div style={styleBody}>
-            <ul className={"listPopup"}>
-                <li>{"Informations"}</li>
-                <li>{"lalala"}</li>
-            </ul>
-            <div>
-                <Button style={styleButton} value={"see more"} />
+const ReactPopup = () => {
+    // Used to tell react to observe this variable that changes
+    const [show, setShow] = React.useState(false);
+
+    if (show === true) {
+        return <Modal />;
+    }
+    return (
+        <Popup>
+            <div style={styleTitle}>{"Name Bank"}</div>
+            <div style={styleBody}>
+                <ul className={"listPopup"}>
+                    <li>{"Informations"}</li>
+                    <li>{"lalala"}</li>
+                </ul>
+                <div>
+                    <Button
+                        style={styleButton}
+                        value={"see more"}
+                        onClick={() => setShow(true)}
+                    />
+                </div>
             </div>
-        </div>
-    </Popup>
-);
+        </Popup>
+    );
+};
 
 export default ReactPopup;
