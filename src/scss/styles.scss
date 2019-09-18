@@ -1,5 +1,6 @@
 body {
     margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .leaflet-container {
@@ -12,8 +13,9 @@ body {
 
 .buttonPopup {
     &:hover {
-        box-shadow: 1px 1px 7px 1px orange;
+        box-shadow: 1px 1px 7px 1px #fa824c;
     }
+    border-color: transparent;
 }
 .buttonModal {
     &:hover {
