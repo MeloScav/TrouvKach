@@ -5,6 +5,19 @@ body {
 .leaflet-container {
     height: 100vh;
 }
+
 .leaflet-popup-content-wrapper {
-    height: 200px;
+    box-shadow: 3px 3px 8px 3px rgba(0, 0, 0, 0.5);
+}
+
+.buttonPopup {
+    &:hover {
+        box-shadow: 1px 1px 7px 1px orange;
+    }
+}
+.buttonModal {
+    &:hover {
+        border-radius: 50%;
+        box-shadow: 1px 1px 7px 1px grey;
+    }
 }

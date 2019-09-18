@@ -2,6 +2,7 @@ import * as React from "react";
 import {Popup} from "react-leaflet";
 import Button from "./button";
 import Modal from "./modal";
+import buttonMore from "./assets/more.png";
 
 const styleTitle = {
     fontSize: "16px",
@@ -17,8 +18,8 @@ const styleButton = {
     color: "#fff",
     fontSize: "12px",
     padding: "6px 5px 6px 5px",
-    borderRadius: "12px 0 12px 0",
-    backgroundColor: "rgb(71,139,249)",
+    borderRadius: "10%",
+    backgroundColor: "rgb(79,179,218)",
 };
 
 const ReactPopup = () => {
@@ -35,15 +36,18 @@ const ReactPopup = () => {
             <div style={styleTitle}>{"Name Bank"}</div>
             <div style={styleBody}>
                 <ul className={"listPopup"}>
-                    <li>{"Informations"}</li>
+                    <li>{"Informations............."}</li>
                     <li>{"lalala"}</li>
                 </ul>
                 <div>
                     {/* on Click, we put in true (the show) with setShow */}
                     <Button
+                        class={"buttonPopup"}
                         style={styleButton}
                         value={"see more"}
                         onClick={() => setShow(true)}
+                        img={buttonMore}
+                        alt={"button more"}
                     />
                 </div>
             </div>

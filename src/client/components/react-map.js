@@ -1,7 +1,5 @@
 import * as React from "react";
 import {Map, TileLayer} from "react-leaflet";
-import Modal from "./modal";
-// import ReactPopup from "./react-popup";
 import ReactMarker from "./react-marker";
 // LIEGE
 const position = [50.6326, 5.5797];
@@ -20,7 +18,6 @@ const ReactMap = () => (
             <ReactMarker position={position} title={"Liege"} />
             <ReactMarker position={position2} title={"Bxl"} />
         </Map>
-        <Modal />
     </div>
 );
 

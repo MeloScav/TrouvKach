@@ -1,6 +1,7 @@
 import * as React from "react";
 import {createPortal} from "react-dom";
 import Button from "./button";
+import buttonClose from "./assets/close-button.png";
 
 const styleModal = {
     display: "block",
@@ -13,8 +14,15 @@ const styleModal = {
     border: "20px solid rgba(0, 0, 0, 0.3)",
     backgroundClip: "padding-box",
     paddingLeft: "15px",
-    paddingRight: "15px",
+    paddingRight: "5px",
     paddingBottom: "10px",
+};
+const styleTitleModal = {};
+const styleButtonM = {
+    borderColor: "transparent",
+    backgroundColor: "transparent",
+    width: "30px",
+    marginTop: "7px",
 };
 
 // Modal with settings "onClose", which will be called at the click
@@ -30,19 +38,22 @@ const Modal = ({onClose}) => {
     return createPortal(
         <div style={styleModal}>
             <div>
-                <h4>{"Name Bank"}</h4>
-                <div>
-                    <p>{"Information bank"}</p>
-                </div>
                 <div>
                     {/* on Click, we put in false (the show) with setShow */}
                     <Button
-                        value={"Close"}
+                        class={"buttonModal"}
+                        style={styleButtonM}
                         onClick={() => {
                             setShow(false);
                             onClose();
                         }}
+                        img={buttonClose}
+                        alt={"button close"}
                     />
+                </div>
+                <h4 style={styleTitleModal}>{"Name Bank"}</h4>
+                <div>
+                    <p>{"Information bank"}</p>
                 </div>
             </div>
         </div>,

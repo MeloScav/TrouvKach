@@ -4,11 +4,20 @@ const containerButton = {
     display: "flex",
     justifyContent: "flex-end",
 };
+const styleImg = {
+    heigth: "1em",
+    width: "1em",
+};
 
 function Button(props) {
     return (
         <div style={containerButton}>
-            <button style={props.style} type={"button"} onClick={props.onClick}>
+            <button
+                className={props.class}
+                style={props.style}
+                type={"button"}
+                onClick={props.onClick}>
+                <img style={styleImg} src={props.img} alt={props.alt} />
                 {props.value}
             </button>
         </div>
