@@ -17,7 +17,9 @@ const styleModal = {
     paddingBottom: "10px",
 };
 
-const Modal = () => {
+// Modal with settings "onClose", which will be called at the click
+// Allows the return to the initial value of the popup
+const Modal = ({onClose}) => {
     // Used to tell react to observe this variable that changes
     const [show, setShow] = React.useState(true);
 
@@ -34,7 +36,13 @@ const Modal = () => {
                 </div>
                 <div>
                     {/* on Click, we put in false (the show) with setShow */}
-                    <Button value={"Close"} onClick={() => setShow(false)} />
+                    <Button
+                        value={"Close"}
+                        onClick={() => {
+                            setShow(false);
+                            onClose();
+                        }}
+                    />
                 </div>
             </div>
         </div>,

@@ -25,8 +25,10 @@ const ReactPopup = () => {
     // Used to tell react to observe this variable that changes
     const [show, setShow] = React.useState(false);
 
+    // In the "if", we need a function "onClose"
+    // which allows the return to the initial value of the show
     if (show === true) {
-        return <Modal />;
+        return <Modal onClose={() => setShow(false)} />;
     }
     return (
         <Popup>
@@ -37,6 +39,7 @@ const ReactPopup = () => {
                     <li>{"lalala"}</li>
                 </ul>
                 <div>
+                    {/* on Click, we put in true (the show) with setShow */}
                     <Button
                         style={styleButton}
                         value={"see more"}
