@@ -41,15 +41,16 @@ const ReactMap = () => {
                 />
                 <ReactMarker position={position} title={"Liege"} />
                 <ReactMarker position={position2} title={"Bxl"} />
+                <Button
+                    class={"buttonAdd"}
+                    style={styleButtonAdd}
+                    value={"New bank"}
+                    img={AddBank}
+                    alt={"Add bank"}
+                    onClick={() => setShow(true)}
+                />
+                {/* <ModalAddBank /> */}
             </Map>
-            <Button
-                class={"buttonAdd"}
-                style={styleButtonAdd}
-                value={"New bank"}
-                img={AddBank}
-                alt={"Add bank"}
-                onClick={() => setShow(true)}
-            />
         </div>
     );
 };

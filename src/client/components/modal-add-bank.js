@@ -1,6 +1,7 @@
 import * as React from "react";
 import {createPortal} from "react-dom";
 import Button from "./button";
+import Form from "./form";
 
 const styleModalAdd = {
     display: "flex",
@@ -9,7 +10,7 @@ const styleModalAdd = {
     alignContent: "center",
     backgroundColor: "#fff",
     width: "30%",
-    height: "50%",
+    height: "70%",
     zIndex: "10000",
     position: "absolute",
     top: "5%",
@@ -32,7 +33,6 @@ const ModalAdd = ({onClose}) => {
     }
     return createPortal(
         <div style={styleModalAdd}>
-            <p>{"hellooo"}</p>
             <div>
                 <Button
                     value={"close"}
@@ -42,6 +42,7 @@ const ModalAdd = ({onClose}) => {
                     }}
                 />
             </div>
+            <Form />
         </div>,
         document.querySelector("#modal-add-bank"),
     );
