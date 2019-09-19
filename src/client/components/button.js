@@ -7,6 +7,7 @@ const containerButton = {
 const styleImg = {
     heigth: "1em",
     width: "1em",
+    paddingRight: "5px",
 };
 
 function Button(props) {

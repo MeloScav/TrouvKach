@@ -13,13 +13,14 @@ const styleBody = {
     padding: 0,
     fontSize: "13px",
 };
-
+// Style button "see more"
 const styleButton = {
     color: "#fff",
     fontSize: "12px",
     padding: "6px 5px 6px 5px",
     borderRadius: "10%",
     backgroundColor: "rgb(79,179,218)",
+    borderColor: "rgb(115,210,222)",
 };
 
 const ReactPopup = () => {

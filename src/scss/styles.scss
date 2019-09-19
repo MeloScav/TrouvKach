@@ -15,7 +15,6 @@ body {
     &:hover {
         box-shadow: 1px 1px 7px 1px #fa824c;
     }
-    border-color: transparent;
 }
 .buttonModal {
     &:hover {
@@ -23,3 +22,9 @@ body {
         box-shadow: 1px 1px 7px 1px grey;
     }
 }
+.buttonAdd {
+    &:hover {
+        box-shadow: 1px 1px 20px 1px #2364aa;
+    }
+}
+/* 33CA7F */

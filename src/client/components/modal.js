@@ -2,6 +2,7 @@ import * as React from "react";
 import {createPortal} from "react-dom";
 import Button from "./button";
 import buttonClose from "./assets/close-button.png";
+import ButtonDelete from "./assets/delete.png";
 
 const styleModal = {
     display: "flex",
@@ -23,6 +24,7 @@ const styleModal = {
 };
 const styleDiv2 = {
     alignSelf: "center",
+    alignItems: "center",
 };
 const styleTitleModal = {
     textAlign: "center",
@@ -30,6 +32,7 @@ const styleTitleModal = {
 const styleText = {
     alignSelf: "center",
 };
+// Style button close modal
 const styleButtonM = {
     alignSelf: "start",
     borderColor: "transparent",
@@ -42,7 +45,12 @@ const styleDivButtons = {
     flexDirection: "row",
     justifyContent: "space-evenly",
 };
-const styleButotnDelete = {};
+// Style button delete and update
+const styleButtonDeleteUpdate = {
+    backgroundColor: "rgb(79,179,218)",
+    color: "#fff",
+    borderColor: "rgb(115,210,222)",
+};
 
 // Modal with settings "onClose", which will be called at the click
 // Allows the return to the initial value of the popup
@@ -77,8 +85,13 @@ const Modal = ({onClose}) => {
                 </div>
             </div>
             <div style={styleDivButtons}>
-                <Button style={styleButotnDelete} value={"Delete"} />
-                <Button value={"Update"} />
+                <Button
+                    style={styleButtonDeleteUpdate}
+                    value={"Delete"}
+                    img={ButtonDelete}
+                    alt={"button delete"}
+                />
+                <Button style={styleButtonDeleteUpdate} value={"Update"} />
             </div>
         </div>,
         document.querySelector("#modal-container"),
