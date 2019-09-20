@@ -87,7 +87,7 @@ const Modal = ({onClose}) => {
                 />
             </div>
             <div style={styleDiv2}>
-                <h4 style={styleTitleModal}>{"Name Bank"}</h4>
+                <h2 style={styleTitleModal}>{"Name Bank"}</h2>
                 <div style={styleText}>
                     <p>{"Information bank"}</p>
                     <p>{"laaaaaaaaaaaaaaaaaaaa"}</p>

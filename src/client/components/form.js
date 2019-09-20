@@ -1,6 +1,19 @@
 import * as React from "react";
 import useForm from "react-hook-form";
 
+const styleForm = {
+    alignSelf: "center",
+};
+const styleTitleModal = {
+    textAlign: "center",
+};
+
+const styleButtonSubmit = {
+    backgroundColor: "rgb(79,179,218)",
+    color: "#fff",
+    borderColor: "rgb(115,210,222)",
+};
+
 const Form = props => {
     const {register, handleSubmit, errors} = useForm(); // Initialise
     // We retrieve the information as an object
@@ -9,7 +22,10 @@ const Form = props => {
     };
 
     return (
-        <div style={props.style}>
+        <div style={styleForm}>
+            <div>
+                <h2 style={styleTitleModal}>{props.title}</h2>
+            </div>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <label>{"Name's bank : "}</label>
                 <input
@@ -69,7 +85,11 @@ const Form = props => {
                 <br />
                 {errors.country && "Country is required."}
                 <br />
-                <input type={"submit"} />
+                <input
+                    style={styleButtonSubmit}
+                    type={"submit"}
+                    value={"submit"}
+                />
             </form>
         </div>
     );

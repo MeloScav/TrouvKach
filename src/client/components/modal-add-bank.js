@@ -10,8 +10,8 @@ const styleModalAdd = {
     justifyContent: "start",
     alignContent: "center",
     backgroundColor: "#fff",
-    width: "400px",
-    height: "400px",
+    width: "300px",
+    height: "auto",
     zIndex: "10000",
     position: "absolute",
     top: "5%",
@@ -53,7 +53,7 @@ const ModalAdd = ({onClose}) => {
                     }}
                 />
             </div>
-            <Form />
+            <Form title={"Add a bank"} />
         </div>,
         document.querySelector("#modal-add-bank"),
     );

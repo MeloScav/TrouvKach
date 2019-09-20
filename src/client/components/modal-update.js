@@ -23,12 +23,7 @@ const styleModalAdd = {
     paddingRight: "5px",
     paddingBottom: "10px",
 };
-const styleTitleModal = {
-    textAlign: "center",
-};
-const styleText = {
-    alignSelf: "center",
-};
+
 // Style button close modal
 const styleButtonM = {
     alignSelf: "start",
@@ -56,11 +51,8 @@ const ModalUpdate = ({onClose}) => {
                         onClose();
                     }}
                 />
-                <div>
-                    <h2 style={styleTitleModal}>{"Update the bank"} </h2>
-                </div>
             </div>
-            <Form style={styleText} />
+            <Form title={"Update the bank"} />
         </div>,
         document.querySelector("#modal-add-bank"),
     );
