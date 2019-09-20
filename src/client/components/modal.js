@@ -12,6 +12,7 @@ const styleModal = {
     alignContent: "center",
     backgroundColor: "#fff",
     width: "50%",
+    height: "auto",
     zIndex: "1000",
     position: "absolute",
     top: "25%",
