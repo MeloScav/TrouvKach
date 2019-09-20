@@ -31,45 +31,28 @@ app.get("/terminals", (req, res) => {
 
         const db = client.db("trouvkash");
 
-        var myPromise = () => {
-            return new Promise((resolve, reject) => {
-           
-               db
-                .collection('terminals')
-                .find()
-                .limit(1)
-                .toArray(function(err, data) {
-                    err 
-                       ? reject(err) 
-                       : resolve(data[0]);
-                  });
+        const myPromise = () =>
+            new Promise((resolve, reject) => {
+                db.collection("terminals")
+                    .find()
+                    .limit(1)
+                    // eslint-disable-next-line no-shadow
+                    .toArray((err, data) => {
+                        // eslint-disable-next-line no-unused-expressions
+                        err ? reject(err) : resolve(data[0]);
+                    });
             });
-        }
 
-        var callMyPromise = async () => {
-        
-        var result = await (myPromise());
-        //anything here is executed after result is resolved
-        return result;
+        const callMyPromise = async () => {
+            const result = await myPromise();
+            //anything here is executed after result is resolved
+            return result;
         };
-        
-        callMyPromise().then(function(result) {
-        client.close();
-        res.send(result);
+
+        callMyPromise().then(result => {
+            client.close();
+            res.send(result);
         });
-});
-
-app.get("/banks", (req, res) => {
-    MongoClient.connect(url, (err, client) => {
-        assert.equal(null, err);
-
-        const db = client.db("trouvkash");
-        const banks = db.collection("banks");
-
-        // eslint-disable-next-line no-console
-        console.log(`ℹ️  (${req.method.toUpperCase()}) ${req.url}`);
-        res.send(db.banks.find({_id: "53937660e0b8c05979c6ea55"}));
-        client.close();
     });
 });
 
@@ -77,26 +60,3 @@ app.listen(APP_PORT, () =>
     // eslint-disable-next-line no-console
     console.log(`🚀 Server is listening on port ${APP_PORT}.`),
 );
-
-// MongoClient.connect(url, (err, client) => {
-//     assert.equal(null, err);
-
-//     const db = client.db("trouvkash");
-//     terminals = db.collection("terminals");
-//     banks = db.collection("banks");
-//     terminals
-//         .find()
-//         .limit(10)
-//         .toArray((_err, items) => {
-//             console.log(items);
-//         });
-//     banks
-//         .find()
-//         .limit(10)
-//         .toArray((_err, items) => {
-//             console.log(items);
-//             db.listCollections();
-//         });
-
-//     client.close();
-// });

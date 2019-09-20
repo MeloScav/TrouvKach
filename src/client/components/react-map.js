@@ -5,7 +5,8 @@ import ReactMarker from "./react-marker";
 
 const axios = require("axios");
 axios.get("/terminals").then(response => {
-    console.log(response);
+    // eslint-disable-next-line no-console
+    console.log(response.data);
 });
 
 const position = [50.6326, 5.5797];
