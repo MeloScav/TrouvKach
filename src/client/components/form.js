@@ -2,16 +2,12 @@ import * as React from "react";
 import useForm from "react-hook-form";
 
 const styleForm = {
+    display: "flex",
+    flexDirection: "column",
     alignSelf: "center",
 };
 const styleTitleModal = {
     textAlign: "center",
-};
-
-const styleButtonSubmit = {
-    backgroundColor: "rgb(79,179,218)",
-    color: "#fff",
-    borderColor: "rgb(115,210,222)",
 };
 
 const Form = props => {
@@ -36,7 +32,9 @@ const Form = props => {
                 />
                 <br />
                 {/* if empty, error + error sentence */}
-                {errors.name && "Name's bank is required."}
+                <div className={"errorForm"}>
+                    {errors.name && "Name's bank is required."}
+                </div>
                 <br />
                 <h4>{"Adress : "}</h4>
                 <br />
@@ -47,7 +45,9 @@ const Form = props => {
                     ref={register({required: true})}
                 />
                 <br />
-                {errors.street && "Street is required."}
+                <div className={"errorForm"}>
+                    {errors.street && "Street is required."}
+                </div>
                 <br />
                 <label>{"Number : "}</label>
                 <input
@@ -56,7 +56,9 @@ const Form = props => {
                     ref={register({required: true})}
                 />
                 <br />
-                {errors.numberStreet && "Street's number is required."}
+                <div className={"errorForm"}>
+                    {errors.numberStreet && "Street's number is required."}
+                </div>
                 <br />
                 <label>{"Postal code : "}</label>
                 <input
@@ -65,7 +67,9 @@ const Form = props => {
                     ref={register({required: true})}
                 />
                 <br />
-                {errors.postalCode && "Postal code is required."}
+                <div className={"errorForm"}>
+                    {errors.postalCode && "Postal code is required."}
+                </div>
                 <br />
                 <label>{"City : "}</label>
                 <input
@@ -74,7 +78,9 @@ const Form = props => {
                     ref={register({required: true})}
                 />
                 <br />
-                {errors.city && "City is required."}
+                <div className={"errorForm"}>
+                    {errors.city && "City is required."}
+                </div>
                 <br />
                 <label>{"Country : "}</label>
                 <input
@@ -83,13 +89,13 @@ const Form = props => {
                     ref={register({required: true})}
                 />
                 <br />
-                {errors.country && "Country is required."}
+                <div className={"errorForm"}>
+                    {errors.country && "Country is required."}
+                </div>
                 <br />
-                <input
-                    style={styleButtonSubmit}
-                    type={"submit"}
-                    value={"submit"}
-                />
+                <div>
+                    <input type={"submit"} value={"submit"} />
+                </div>
             </form>
         </div>
     );

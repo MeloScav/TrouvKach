@@ -27,4 +27,15 @@ body {
         box-shadow: 1px 1px 20px 1px #2364aa;
     }
 }
-/* 33CA7F */
+
+input[type="submit"] {
+    justify-content: flex-end;
+    align-self: flex-end;
+    background-color: rgb(79, 179, 218);
+    color: #fff;
+    border-color: rgb(115, 210, 222);
+    margin-right: 5px;
+}
+.errorForm {
+    color: red;
+}
