@@ -4,7 +4,7 @@ import Reactpopup from "./react-popup";
 
 const ReactMarker = props => (
     <Marker position={props.position} title={props.title}>
-        <Reactpopup />
+        <Reactpopup obj={props.obj} />
     </Marker>
 );
 

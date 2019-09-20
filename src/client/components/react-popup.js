@@ -23,7 +23,7 @@ const styleButton = {
     borderColor: "rgb(115,210,222)",
 };
 
-const ReactPopup = () => {
+const ReactPopup = props => {
     // Used to tell react to observe this variable that changes
     const [show, setShow] = React.useState(false);
 
@@ -32,26 +32,36 @@ const ReactPopup = () => {
     if (show === true) {
         return <Modal onClose={() => setShow(false)} />;
     }
+    console.log(props.obj);
+    if (typeof props.obj !== "undefined") {
+        return (
+            <Popup>
+                <div style={styleTitle}>
+                    {props.obj.bank && props.obj.bank.name}
+                </div>
+                <div style={styleBody}>
+                    <ul className={"listPopup"}>
+                        <li>{props.obj.address}</li>
+                        <li>{"lalala"}</li>
+                    </ul>
+                    <div>
+                        {/* on Click, we put in true (the show) with setShow */}
+                        <Button
+                            class={"buttonPopupAndModal"}
+                            style={styleButton}
+                            value={"see more"}
+                            onClick={() => setShow(true)}
+                            img={buttonMore}
+                            alt={"button more"}
+                        />
+                    </div>
+                </div>
+            </Popup>
+        );
+    }
     return (
         <Popup>
-            <div style={styleTitle}>{"Name Bank"}</div>
-            <div style={styleBody}>
-                <ul className={"listPopup"}>
-                    <li>{"Informations............."}</li>
-                    <li>{"lalala"}</li>
-                </ul>
-                <div>
-                    {/* on Click, we put in true (the show) with setShow */}
-                    <Button
-                        class={"buttonPopupAndModal"}
-                        style={styleButton}
-                        value={"see more"}
-                        onClick={() => setShow(true)}
-                        img={buttonMore}
-                        alt={"button more"}
-                    />
-                </div>
-            </div>
+            <div style={styleTitle}>{"YOU !"}</div>
         </Popup>
     );
 };
