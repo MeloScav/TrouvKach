@@ -3,6 +3,11 @@ import {Map, TileLayer} from "react-leaflet";
 // import ReactPopup from "./react-popup";
 import ReactMarker from "./react-marker";
 
+const axios = require("axios");
+axios.get("/terminals").then(response => {
+    console.log(response);
+});
+
 const position = [50.6326, 5.5797];
 const ReactMap = () => (
     <div>
@@ -10,10 +15,14 @@ const ReactMap = () => (
             <TileLayer
                 url={"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"}
                 attribution={
-                    'Map data &copy;, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
+                    'Map data &copy;, Imagery © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
                 }
             />
+
+            {/* Marker for user position */}
             <ReactMarker center={position} />
+
+            {/* Popups for terminals position */}
         </Map>
     </div>
 );

@@ -9,6 +9,10 @@
 import express from "express";
 import path from "path";
 
+const MongoClient = require("mongodb").MongoClient;
+const assert = require("assert");
+const url = "mongodb://dev:dev@mongo:27017";
+
 const {APP_PORT} = process.env;
 
 const app = express();
@@ -21,29 +25,78 @@ app.get("/hello", (req, res) => {
     res.send("Hello, World!");
 });
 
+app.get("/terminals", (req, res) => {
+    MongoClient.connect(url, (err, client) => {
+        assert.equal(null, err);
+
+        const db = client.db("trouvkash");
+
+        var myPromise = () => {
+            return new Promise((resolve, reject) => {
+           
+               db
+                .collection('terminals')
+                .find()
+                .limit(1)
+                .toArray(function(err, data) {
+                    err 
+                       ? reject(err) 
+                       : resolve(data[0]);
+                  });
+            });
+        }
+
+        var callMyPromise = async () => {
+        
+        var result = await (myPromise());
+        //anything here is executed after result is resolved
+        return result;
+        };
+        
+        callMyPromise().then(function(result) {
+        client.close();
+        res.send(result);
+        });
+});
+
+app.get("/banks", (req, res) => {
+    MongoClient.connect(url, (err, client) => {
+        assert.equal(null, err);
+
+        const db = client.db("trouvkash");
+        const banks = db.collection("banks");
+
+        // eslint-disable-next-line no-console
+        console.log(`ℹ️  (${req.method.toUpperCase()}) ${req.url}`);
+        res.send(db.banks.find({_id: "53937660e0b8c05979c6ea55"}));
+        client.close();
+    });
+});
+
 app.listen(APP_PORT, () =>
     // eslint-disable-next-line no-console
     console.log(`🚀 Server is listening on port ${APP_PORT}.`),
 );
 
-const MongoClient = require("mongodb").MongoClient;
-const assert = require("assert");
-const url = "mongodb://dev:dev@mongo:27017";
+// MongoClient.connect(url, (err, client) => {
+//     assert.equal(null, err);
 
-MongoClient.connect(url, (err, client) => {
-    assert.equal(null, err);
+//     const db = client.db("trouvkash");
+//     terminals = db.collection("terminals");
+//     banks = db.collection("banks");
+//     terminals
+//         .find()
+//         .limit(10)
+//         .toArray((_err, items) => {
+//             console.log(items);
+//         });
+//     banks
+//         .find()
+//         .limit(10)
+//         .toArray((_err, items) => {
+//             console.log(items);
+//             db.listCollections();
+//         });
 
-    const db = client.db("trouvkash");
-    const terminals = db.collection("terminals");
-    console.log(
-        terminals
-            .find()
-            .limit(20)
-            .toArray((err, items) => {
-                client.close();
-                console.log(items);
-                console.log(err);
-            }),
-    );
-    client.close();
-});
+//     client.close();
+// });
