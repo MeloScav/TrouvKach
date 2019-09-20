@@ -2,6 +2,7 @@ import * as React from "react";
 import {createPortal} from "react-dom";
 import Button from "./button";
 import Form from "./form";
+import buttonClose from "./assets/close-button.png";
 
 const styleModalAdd = {
     display: "flex",
@@ -22,6 +23,14 @@ const styleModalAdd = {
     paddingRight: "5px",
     paddingBottom: "10px",
 };
+// Style button close
+const styleButtonM = {
+    alignSelf: "start",
+    borderColor: "transparent",
+    backgroundColor: "transparent",
+    width: "30px",
+    marginTop: "7px",
+};
 
 const ModalAdd = ({onClose}) => {
     // Used to tell react to observe this variable that changes
@@ -35,7 +44,9 @@ const ModalAdd = ({onClose}) => {
         <div style={styleModalAdd}>
             <div>
                 <Button
-                    value={"close"}
+                    style={styleButtonM}
+                    img={buttonClose}
+                    alt={"button close"}
                     onClick={() => {
                         setShow(false);
                         onClose();

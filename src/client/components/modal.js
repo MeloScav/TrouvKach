@@ -8,8 +8,8 @@ import ModalUpdate from "./modal-update";
 const styleModal = {
     display: "flex",
     flexDirection: "column",
+    flexWrap: "wrap",
     justifyContent: "center",
-    alignContent: "center",
     backgroundColor: "#fff",
     width: "50%",
     height: "auto",
@@ -45,6 +45,7 @@ const styleButtonM = {
 const styleDivButtons = {
     display: "flex",
     flexDirection: "row",
+    flexWrap: "wrap",
     justifyContent: "space-evenly",
 };
 // Style button delete and update
@@ -89,7 +90,7 @@ const Modal = ({onClose}) => {
                 <h4 style={styleTitleModal}>{"Name Bank"}</h4>
                 <div style={styleText}>
                     <p>{"Information bank"}</p>
-                    <p>{"laaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}</p>
+                    <p>{"laaaaaaaaaaaaaaaaaaaa"}</p>
                 </div>
             </div>
             <div style={styleDivButtons}>
