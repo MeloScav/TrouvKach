@@ -43,7 +43,7 @@ const ReactPopup = () => {
                 <div>
                     {/* on Click, we put in true (the show) with setShow */}
                     <Button
-                        class={"buttonPopup"}
+                        class={"buttonPopupAndModal"}
                         style={styleButton}
                         value={"see more"}
                         onClick={() => setShow(true)}

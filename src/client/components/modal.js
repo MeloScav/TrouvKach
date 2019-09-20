@@ -4,6 +4,7 @@ import Button from "./button";
 import buttonClose from "./assets/close-button.png";
 import ButtonDelete from "./assets/delete.png";
 import ModalUpdate from "./modal-update";
+import ButtonUpdate from "./assets/update.png";
 
 const styleModal = {
     display: "flex",
@@ -53,6 +54,7 @@ const styleButtonDeleteUpdate = {
     backgroundColor: "rgb(79,179,218)",
     color: "#fff",
     borderColor: "rgb(115,210,222)",
+    borderRadius: "10%",
 };
 
 // Modal with settings "onClose", which will be called at the click
@@ -95,17 +97,21 @@ const Modal = ({onClose}) => {
             </div>
             <div style={styleDivButtons}>
                 <Button
+                    class={"buttonPopupAndModal"}
                     style={styleButtonDeleteUpdate}
                     value={"Delete"}
                     img={ButtonDelete}
                     alt={"button delete"}
                 />
                 <Button
+                    class={"buttonPopupAndModal"}
                     style={styleButtonDeleteUpdate}
                     value={"Update"}
                     onClick={() => {
                         setShowUpdate(true);
                     }}
+                    img={ButtonUpdate}
+                    alt={"button update"}
                 />
             </div>
         </div>,

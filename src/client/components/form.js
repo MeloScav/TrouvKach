@@ -22,77 +22,84 @@ const Form = props => {
             <div>
                 <h2 style={styleTitleModal}>{props.title}</h2>
             </div>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <label>{"Name's bank : "}</label>
-                <input
-                    type={"text"}
-                    name={"name"}
-                    // Required
-                    ref={register({required: true})}
-                />
-                <br />
-                {/* if empty, error + error sentence */}
-                <div className={"errorForm"}>
-                    {errors.name && "Name's bank is required."}
-                </div>
-                <br />
-                <h4>{"Adress : "}</h4>
-                <br />
-                <label>{"street : "}</label>
-                <input
-                    type={"text"}
-                    name={"street"}
-                    ref={register({required: true})}
-                />
-                <br />
-                <div className={"errorForm"}>
-                    {errors.street && "Street is required."}
-                </div>
-                <br />
-                <label>{"Number : "}</label>
-                <input
-                    type={"number"}
-                    name={"numberStreet"}
-                    ref={register({required: true})}
-                />
-                <br />
-                <div className={"errorForm"}>
-                    {errors.numberStreet && "Street's number is required."}
-                </div>
-                <br />
-                <label>{"Postal code : "}</label>
-                <input
-                    type={"number"}
-                    name={"postalCode"}
-                    ref={register({required: true})}
-                />
-                <br />
-                <div className={"errorForm"}>
-                    {errors.postalCode && "Postal code is required."}
-                </div>
-                <br />
-                <label>{"City : "}</label>
-                <input
-                    type={"text"}
-                    name={"city"}
-                    ref={register({required: true})}
-                />
-                <br />
-                <div className={"errorForm"}>
-                    {errors.city && "City is required."}
-                </div>
-                <br />
-                <label>{"Country : "}</label>
-                <input
-                    type={"text"}
-                    name={"country"}
-                    ref={register({required: true})}
-                />
-                <br />
-                <div className={"errorForm"}>
-                    {errors.country && "Country is required."}
-                </div>
-                <br />
+            <form method={"post"} onSubmit={handleSubmit(onSubmit)}>
+                <fieldset>
+                    <legend>{"Bank"} </legend>
+                    <div>
+                        <label>{"Name's bank : "}</label>
+                        <input
+                            type={"text"}
+                            name={"name"}
+                            // Required
+                            ref={register({required: true})}
+                        />
+                    </div>
+
+                    {/* if empty, error + error sentence */}
+                    <div className={"errorForm"}>
+                        {errors.name && "Name's bank is required."}
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>{"Adress "} </legend>
+
+                    <label>{"street : "}</label>
+                    <input
+                        type={"text"}
+                        name={"street"}
+                        ref={register({required: true})}
+                    />
+
+                    <div className={"errorForm"}>
+                        {errors.street && "Street is required."}
+                    </div>
+
+                    <label>{"Number : "}</label>
+                    <input
+                        type={"number"}
+                        name={"numberStreet"}
+                        ref={register({required: true})}
+                    />
+                    <br />
+                    <div className={"errorForm"}>
+                        {errors.numberStreet && "Street's number is required."}
+                    </div>
+                    <br />
+                    <label>{"Postal code : "}</label>
+                    <input
+                        type={"number"}
+                        name={"postalCode"}
+                        ref={register({required: true})}
+                    />
+
+                    <div className={"errorForm"}>
+                        {errors.postalCode && "Postal code is required."}
+                    </div>
+
+                    <label>{"City : "}</label>
+                    <input
+                        type={"text"}
+                        name={"city"}
+                        ref={register({required: true})}
+                    />
+
+                    <div className={"errorForm"}>
+                        {errors.city && "City is required."}
+                    </div>
+
+                    <label>{"Country : "}</label>
+                    <input
+                        type={"text"}
+                        name={"country"}
+                        ref={register({required: true})}
+                    />
+
+                    <div className={"errorForm"}>
+                        {errors.country && "Country is required."}
+                    </div>
+                </fieldset>
+
                 <div>
                     <input type={"submit"} value={"submit"} />
                 </div>

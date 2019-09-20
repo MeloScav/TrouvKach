@@ -10,7 +10,7 @@ const styleModalAdd = {
     justifyContent: "start",
     alignContent: "center",
     backgroundColor: "#fff",
-    width: "300px",
+    width: "auto",
     height: "auto",
     zIndex: "10000",
     position: "absolute",
