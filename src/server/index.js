@@ -8,6 +8,7 @@
 
 import express from "express";
 import path from "path";
+import {mongoRequestBanks, mongoRequestZoom} from "./mongo";
 
 const {APP_PORT} = process.env;
 
@@ -15,37 +16,24 @@ const app = express();
 
 app.use(express.static(path.resolve(__dirname, "../../bin/client")));
 
-app.get("/hello", (req, res) => {
-    // eslint-disable-next-line no-console
-    console.log(`ℹ️  (${req.method.toUpperCase()}) ${req.url}`);
-    res.send("Hello, World!");
+app.get("/bank", (req, res) => {
+    console.log("hello bank");
+    mongoRequestBanks().then(rep => {
+        res.send(rep); // Envoie la réponse
+    });
+});
+
+// Recupère longitude, latitude, distance
+app.get("/terminal/:long/:lat/:dist", (req, res) => {
+    console.log(req.params.long, req.params.lat, req.params.dist);
+    mongoRequestZoom(req.params.long, req.params.lat, req.params.dist).then(
+        rep => {
+            res.send(rep); // Envoie la réponse
+        },
+    );
 });
 
 app.listen(APP_PORT, () =>
     // eslint-disable-next-line no-console
     console.log(`🚀 Server is listening on port ${APP_PORT}.`),
 );
-
-const MongoClient = require("mongodb").MongoClient;
-const assert = require("assert");
-const url = "mongodb://dev:dev@mongo:27017";
-
-MongoClient.connect(url, (err, client) => {
-    assert.equal(null, err);
-
-    const db = client.db("trouvkash");
-    const terminals = db.collection("terminals");
-    //const banks = db.collection("banks");
-    console.log(
-        terminals
-            .find()
-            .limit(20)
-            // eslint-disable-next-line no-shadow
-            .toArray((err, items) => {
-                client.close();
-                console.log(items);
-                console.log(err);
-            }),
-    );
-    client.close();
-});
