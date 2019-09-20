@@ -53,7 +53,9 @@
   },
   "dependencies": {
     "assert": "^2.0.0",
+    "axios": "^0.19.0",
     "express": "^4.17.1",
+    "fs": "0.0.1-security",
     "leaflet": "^1.5.1",
     "mongodb": "^3.3.2",
     "react": "^16.9.0",

@@ -12,6 +12,7 @@ app.get("/bank/:name", (req, res) => {
     const uri = "mongodb+srv://admin:admin@cash-dejic.gcp.mongodb.net/test";
     const client = new MongoClient(uri, {useNewUrlParser: true});
 
+    const param = req.params.name;
     let report = "";
 
     client.connect(() => {
@@ -23,7 +24,10 @@ app.get("/bank/:name", (req, res) => {
                 .toArray((err, items) => {
                     client.close();
                     report = report + String(items[0].name);
-                    res.send(report);
+                    res.send(
+                        `<h1> Valeur passé en paramètre dans l'url : ${param}</h1>` +
+                            ` <br> <h1> Valeur retrouvé dans le base de données : ${report}`,
+                    );
                     console.log(err);
                 }),
         );

@@ -13,6 +13,7 @@ const {resolve} = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = env => {
+         
     const plugins = [
         new webpack.EnvironmentPlugin({
             NODE_ENV: env === "dev" ? "development" : "production",
@@ -35,6 +36,9 @@ module.exports = env => {
                 maxInitialRequests: Infinity,
                 minSize: 0,
                 maxSize: 20000,
+                node: {
+                    fs: 'empty'
+                  }  ,
                 cacheGroups: {
                     vendor: {
                         test: /[\\/]node_modules[\\/]/,
@@ -106,6 +110,9 @@ module.exports = env => {
                 {
                     test: /\.(s*)css$/,
                     use: ["style-loader", "css-loader", "sass-loader"],
+                    node: {
+                        fs: 'empty'
+                      }  
                 },
             ],
         },
