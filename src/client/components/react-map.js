@@ -3,7 +3,7 @@ import {Map, TileLayer} from "react-leaflet";
 // import ReactPopup from "./react-popup";
 import ReactMarker from "./react-marker";
 const MongoClient = require("mongodb").MongoClient;
-import fs from 'fs'
+import fs from "fs";
 
 const uri = "mongodb+srv://admin:admin@cash-dejic.gcp.mongodb.net/test";
 const client = new MongoClient(uri, {useNewUrlParser: true});
