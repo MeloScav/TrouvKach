@@ -1,7 +1,7 @@
 import * as React from "react";
 import useForm from "react-hook-form";
 
-const Form = () => {
+const Form = props => {
     const {register, handleSubmit, errors} = useForm(); // Initialise
     // We retrieve the information as an object
     const onSubmit = data => {
@@ -9,7 +9,7 @@ const Form = () => {
     };
 
     return (
-        <div>
+        <div style={props.style}>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <label>{"Name's bank : "}</label>
                 <input

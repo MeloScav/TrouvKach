@@ -3,6 +3,7 @@ import {createPortal} from "react-dom";
 import Button from "./button";
 import buttonClose from "./assets/close-button.png";
 import ButtonDelete from "./assets/delete.png";
+import ModalUpdate from "./modal-update";
 
 const styleModal = {
     display: "flex",
@@ -57,11 +58,17 @@ const styleButtonDeleteUpdate = {
 const Modal = ({onClose}) => {
     // Used to tell react to observe this variable that changes
     const [show, setShow] = React.useState(true);
-
     if (show === false) {
         // If false, the modal disappears
         return null;
     }
+    // Modale Update
+    const [showUpdate, setShowUpdate] = React.useState(false);
+
+    if (showUpdate === true) {
+        return <ModalUpdate onClose={() => setShowUpdate(false)} />;
+    }
+
     return createPortal(
         <div style={styleModal}>
             <div>
@@ -91,10 +98,16 @@ const Modal = ({onClose}) => {
                     img={ButtonDelete}
                     alt={"button delete"}
                 />
-                <Button style={styleButtonDeleteUpdate} value={"Update"} />
+                <Button
+                    style={styleButtonDeleteUpdate}
+                    value={"Update"}
+                    onClick={() => {
+                        setShowUpdate(true);
+                    }}
+                />
             </div>
         </div>,
-        document.querySelector("#modal-container"),
+        document.querySelector("#modal-update"),
     );
 };
 
