@@ -25,10 +25,15 @@ const position2 = [50.85045, 4.34878];
 const ReactMap = () => {
     // Used to tell react to observe this variable that changes
     const [show, setShow] = React.useState(false);
-    // In the "if", we need a function "onClose"
-    // which allows the return to the initial value of the show
+
+    // To display the modal above the map
+    // Define an empty variable
+    // If show true, add the modal in the variable
+    // Add the variable in the return with the map
+    let $modalAddBank;
+
     if (show === true) {
-        return <ModalAddBank onClose={() => setShow(false)} />;
+        $modalAddBank = <ModalAddBank onClose={() => setShow(false)} />;
     }
     return (
         <div>
@@ -49,7 +54,7 @@ const ReactMap = () => {
                     alt={"Add bank"}
                     onClick={() => setShow(true)}
                 />
-                {/* <ModalAddBank /> */}
+                {$modalAddBank}
             </Map>
         </div>
     );
