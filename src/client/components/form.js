@@ -25,7 +25,7 @@ const Form = props => {
             <form method={"post"} onSubmit={handleSubmit(onSubmit)}>
                 <fieldset>
                     <legend>{"Bank"} </legend>
-                    <div>
+                    <div className={"labelInput"}>
                         <label>{"Name's bank : "}</label>
                         <input
                             type={"text"}
@@ -43,57 +43,67 @@ const Form = props => {
 
                 <fieldset>
                     <legend>{"Adress "} </legend>
-
-                    <label>{"street : "}</label>
-                    <input
-                        type={"text"}
-                        name={"street"}
-                        ref={register({required: true})}
-                    />
+                    <div className={"labelInput"}>
+                        <label>{"street : "}</label>
+                        <input
+                            type={"text"}
+                            name={"street"}
+                            ref={register({required: true})}
+                        />
+                    </div>
 
                     <div className={"errorForm"}>
                         {errors.street && "Street is required."}
                     </div>
 
-                    <label>{"Number : "}</label>
-                    <input
-                        type={"number"}
-                        name={"numberStreet"}
-                        ref={register({required: true})}
-                    />
+                    <div className={"labelInput"}>
+                        <label>{"Number : "}</label>
+                        <input
+                            type={"number"}
+                            name={"numberStreet"}
+                            ref={register({required: true})}
+                        />
+                    </div>
+
                     <br />
                     <div className={"errorForm"}>
                         {errors.numberStreet && "Street's number is required."}
                     </div>
                     <br />
-                    <label>{"Postal code : "}</label>
-                    <input
-                        type={"number"}
-                        name={"postalCode"}
-                        ref={register({required: true})}
-                    />
+                    <div className={"labelInput"}>
+                        <label>{"Postal code : "}</label>
+                        <input
+                            type={"number"}
+                            name={"postalCode"}
+                            ref={register({required: true})}
+                        />
+                    </div>
 
                     <div className={"errorForm"}>
                         {errors.postalCode && "Postal code is required."}
                     </div>
 
-                    <label>{"City : "}</label>
-                    <input
-                        type={"text"}
-                        name={"city"}
-                        ref={register({required: true})}
-                    />
+                    <div className={"labelInput"}>
+                        <label>{"City : "}</label>
+                        <input
+                            type={"text"}
+                            name={"city"}
+                            ref={register({required: true})}
+                        />
+                    </div>
 
                     <div className={"errorForm"}>
                         {errors.city && "City is required."}
                     </div>
 
-                    <label>{"Country : "}</label>
-                    <input
-                        type={"text"}
-                        name={"country"}
-                        ref={register({required: true})}
-                    />
+                    <div className={"labelInput"}>
+                        <label>{"Country : "}</label>
+                        <input
+                            type={"text"}
+                            name={"country"}
+                            ref={register({required: true})}
+                        />
+                    </div>
 
                     <div className={"errorForm"}>
                         {errors.country && "Country is required."}

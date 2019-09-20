@@ -34,7 +34,8 @@ input[type="submit"] {
     background-color: rgb(79, 179, 218);
     color: #fff;
     border-color: rgb(115, 210, 222);
-    margin-right: 5px;
+    margin: 10px;
+
     &:hover {
         box-shadow: 1px 1px 7px 1px #2364aa;
     }
@@ -44,5 +45,12 @@ input[type="submit"] {
 }
 
 label {
-    margin-right: 10px;
+    margin-right: 5px;
+}
+fieldset {
+    background-color: #e5f9fb;
+}
+
+.labelInput {
+    margin-bottom: 5px;
 }
