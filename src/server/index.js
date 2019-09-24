@@ -8,7 +8,12 @@
 
 import express from "express";
 import path from "path";
-import {mongoRequestBanks, mongoRequestZoom} from "./mongo";
+import {
+    mongoRequestBanks,
+    mongoRequestZoom,
+    mongomodify,
+    newTerminal,
+} from "./mongo";
 
 const {APP_PORT} = process.env;
 
@@ -33,6 +38,23 @@ app.get("/terminal/:long/:lat/:dist", (req, res) => {
     );
 });
 
+// Ajout des modifications
+app.get("/modifTerminal/:id/:champ/:value", (req, res) => {
+    mongomodify(req.params.id, req.params.champ, req.params.value).then(rep => {
+        res.send(rep);
+    });
+});
+
+// New bank
+app.get("/newTerminal/:idBank/:long/:lat", (req, res) => {
+    newTerminal(req.params.idBank, req.params.long, req.params.lat).then(
+        rep => {
+            res.send(rep);
+        },
+    );
+});
+
+// Toujours à la fin
 app.listen(APP_PORT, () =>
     // eslint-disable-next-line no-console
     console.log(`🚀 Server is listening on port ${APP_PORT}.`),

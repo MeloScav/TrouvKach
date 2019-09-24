@@ -30,9 +30,8 @@ const ReactPopup = props => {
     // In the "if", we need a function "onClose"
     // which allows the return to the initial value of the show
     if (show === true) {
-        return <Modal onClose={() => setShow(false)} />;
+        return <Modal onClose={() => setShow(false)} obj={props.obj} />;
     }
-    console.log(props.obj);
     if (typeof props.obj !== "undefined") {
         return (
             <Popup>
@@ -42,7 +41,7 @@ const ReactPopup = props => {
                 <div style={styleBody}>
                     <ul className={"listPopup"}>
                         <li>{props.obj.address}</li>
-                        <li>{"lalala"}</li>
+                        <li>{`${Math.floor(props.obj.dist.calculated)} m`}</li>
                     </ul>
                     <div>
                         {/* on Click, we put in true (the show) with setShow */}

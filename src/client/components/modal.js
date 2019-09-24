@@ -5,6 +5,7 @@ import buttonClose from "./assets/close-button.png";
 import ButtonDelete from "./assets/delete.png";
 import ModalUpdate from "./modal-update";
 import ButtonUpdate from "./assets/update.png";
+import Utile from "../js/utile";
 
 const styleModal = {
     display: "flex",
@@ -56,10 +57,15 @@ const styleButtonDeleteUpdate = {
     borderColor: "rgb(115,210,222)",
     borderRadius: "10%",
 };
+//Style button modif
+const styleButtonModif = {
+    backgroundColor: "rgb(79,179,218)",
+    color: "#fff",
+};
 
 // Modal with settings "onClose", which will be called at the click
 // Allows the return to the initial value of the popup
-const Modal = ({onClose}) => {
+const Modal = props => {
     // Used to tell react to observe this variable that changes
     const [show, setShow] = React.useState(true);
     if (show === false) {
@@ -68,6 +74,23 @@ const Modal = ({onClose}) => {
     }
     // Modale Update
     const [showUpdate, setShowUpdate] = React.useState(false);
+
+    //Button Modif vide ou plein
+    const [modif, setModif] = React.useState(!!props.obj.empty); // !! = transforme en booleen
+
+    React.useEffect(() => {
+        setModif(props.obj.empty);
+    }, [props.obj.empty]);
+
+    const buttonVidePlein = () => {
+        if (props.obj.empty) {
+            props.obj.empty = false;
+        } else {
+            props.obj.empty = true;
+        }
+        setModif(props.obj.empty);
+        Utile.updateTerminal(props.obj._id, "empty", props.obj.empty);
+    };
 
     if (showUpdate === true) {
         return <ModalUpdate onClose={() => setShowUpdate(false)} />;
@@ -82,17 +105,33 @@ const Modal = ({onClose}) => {
                     style={styleButtonM}
                     onClick={() => {
                         setShow(false);
-                        onClose();
+                        props.onClose();
                     }}
                     img={buttonClose}
                     alt={"button close"}
                 />
             </div>
             <div style={styleDiv2}>
-                <h2 style={styleTitleModal}>{"Name Bank"}</h2>
+                <h2 style={styleTitleModal}>
+                    {props.obj.bank && props.obj.bank.name}
+                </h2>
                 <div style={styleText}>
-                    <p>{"Information bank"}</p>
-                    <p>{"laaaaaaaaaaaaaaaaaaaa"}</p>
+                    <p>{props.obj.address}</p>
+                    <p>{`${Math.floor(props.obj.dist.calculated)} m`}</p>
+                    <p>
+                        {(() => {
+                            if (modif) {
+                                return "Vide";
+                            }
+                            return "Plein";
+                        })()}
+                    </p>
+                    <Button
+                        class={"buttonbuttonVidePleinModif"}
+                        style={styleButtonModif}
+                        value={"Modifier"}
+                        onClick={buttonVidePlein}
+                    />
                 </div>
             </div>
             <div style={styleDivButtons}>

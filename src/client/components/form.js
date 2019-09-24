@@ -1,5 +1,6 @@
 import * as React from "react";
 import useForm from "react-hook-form";
+import {newTerminal} from "../js/utile";
 
 const styleForm = {
     display: "flex",
@@ -15,7 +16,31 @@ const Form = props => {
     // We retrieve the information as an object
     const onSubmit = data => {
         console.log(data);
+        navigator.geolocation.getCurrentPosition(
+            positionC => {
+                newTerminal(
+                    data.bankId,
+                    positionC.coords.longitude,
+                    positionC.coords.latitude,
+                );
+            },
+            error => console.warn(error.message),
+            {enableHighAccuracy: false, timeout: 20000, maximumAge: 1000},
+        );
     };
+
+    //récupérer les banques (localstorage)
+    //retransformer en tableau d'objet
+    const stringToArrayObject = str => {
+        const newArr = str.split("|");
+        for (let i = 0; i < newArr.length; i++) {
+            newArr[i] = JSON.parse(newArr[i]);
+        }
+        return newArr;
+    };
+
+    let allbanks = localStorage.getItem("allbanks");
+    allbanks = stringToArrayObject(allbanks);
 
     return (
         <div style={styleForm}>
@@ -27,86 +52,20 @@ const Form = props => {
                     <legend>{"Bank"} </legend>
                     <div className={"labelInput"}>
                         <label>{"Name's bank : "}</label>
-                        <input
-                            type={"text"}
-                            name={"name"}
-                            // Required
-                            ref={register({required: true})}
-                        />
+                        <select
+                            name={"bankId"}
+                            ref={register({required: true})}>
+                            {allbanks.map(el => (
+                                <option key={el._id} value={el._id}>
+                                    {el.name}
+                                </option>
+                            ))}
+                        </select>
                     </div>
 
                     {/* if empty, error + error sentence */}
                     <div className={"errorForm"}>
                         {errors.name && "Name's bank is required."}
-                    </div>
-                </fieldset>
-
-                <fieldset>
-                    <legend>{"Adress "} </legend>
-                    <div className={"labelInput"}>
-                        <label>{"street : "}</label>
-                        <input
-                            type={"text"}
-                            name={"street"}
-                            ref={register({required: true})}
-                        />
-                    </div>
-
-                    <div className={"errorForm"}>
-                        {errors.street && "Street is required."}
-                    </div>
-
-                    <div className={"labelInput"}>
-                        <label>{"Number : "}</label>
-                        <input
-                            type={"number"}
-                            name={"numberStreet"}
-                            ref={register({required: true})}
-                        />
-                    </div>
-
-                    <br />
-                    <div className={"errorForm"}>
-                        {errors.numberStreet && "Street's number is required."}
-                    </div>
-                    <br />
-                    <div className={"labelInput"}>
-                        <label>{"Postal code : "}</label>
-                        <input
-                            type={"number"}
-                            name={"postalCode"}
-                            ref={register({required: true})}
-                        />
-                    </div>
-
-                    <div className={"errorForm"}>
-                        {errors.postalCode && "Postal code is required."}
-                    </div>
-
-                    <div className={"labelInput"}>
-                        <label>{"City : "}</label>
-                        <input
-                            type={"text"}
-                            name={"city"}
-                            ref={register({required: true})}
-                        />
-                    </div>
-
-                    <div className={"errorForm"}>
-                        {errors.city && "City is required."}
-                    </div>
-
-                    <div className={"labelInput"}>
-                        <label>{"Country : "}</label>
-                        <input
-                            type={"text"}
-                            name={"country"}
-                            ref={register({required: true})}
-                        />
-                    </div>
-
-                    <div className={"errorForm"}>
-                        {errors.country && "Country is required."}
                     </div>
                 </fieldset>
 

@@ -55,6 +55,7 @@
     "express": "^4.17.1",
     "leaflet": "^1.5.1",
     "mongodb": "^3.3.2",
+    "node-fetch": "^2.6.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-hook-form": "^3.23.9",

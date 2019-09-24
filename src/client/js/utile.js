@@ -1,4 +1,4 @@
-//fonction pour récup les banques
+//fonction pour récup les banques, transforme longitude et latitude en adresse
 const getUnlnownAdressFromNominatim = async (lat, lon) => {
     const response = await fetch(
         `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}`,
@@ -88,4 +88,32 @@ exports.getTerminalAsync = async (long, lat, zoom) => {
     }
 
     return data;
+};
+
+// Ajout des modifications
+exports.updateTerminal = async (id, champ, value) => {
+    const test = `/modifTerminal/${id}/${champ}/${value}`;
+    const response = await fetch(test, {
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        },
+        method: "GET",
+    });
+    const data = await response.json();
+    console.log(data);
+};
+
+// Mettre une nouvelle bank
+exports.newTerminal = async (idBank, long, lat) => {
+    const test = `/newTerminal/${idBank}/${long}/${lat}`;
+    const response = await fetch(test, {
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        },
+        method: "GET",
+    });
+    const data = await response.json();
+    console.log(data);
 };
