@@ -15,7 +15,9 @@ import {
     newTerminal,
 } from "./mongo";
 
-const {APP_PORT} = process.env;
+const {APP_PORT, PORT} = process.env;
+
+const port = APP_PORT || PORT;
 
 const app = express();
 
@@ -55,7 +57,7 @@ app.get("/newTerminal/:idBank/:long/:lat", (req, res) => {
 });
 
 // Toujours à la fin
-app.listen(APP_PORT, () =>
+app.listen(port, () =>
     // eslint-disable-next-line no-console
-    console.log(`🚀 Server is listening on port ${APP_PORT}.`),
+    console.log(`🚀 Server is listening on port ${port}.`),
 );
