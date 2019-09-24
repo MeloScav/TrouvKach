@@ -1,6 +1,6 @@
 const mongo = require("mongodb").MongoClient;
 //A MODIFIER
-const urlRemote = `mongodb+srv://dev:---@haerphi-trouvkash-jyzbr.mongodb.net/test?retryWrites=true&w=majority`;
+const urlRemote = `mongodb+srv://dev:dev@cluster0-rhjfx.mongodb.net/test?retryWrites=true&w=majority`;
 const urlLocal = "mongodb://dev:dev@localhost:27017";
 
 const updateBD = async url => {
@@ -77,6 +77,7 @@ if (typeof remoteOrLocal != "undefined") {
         console.log(uri);
     }
 }
+console.log(uri);
 if (typeof choix != "undefined") {
     if (choix === "index") {
         index(uri);

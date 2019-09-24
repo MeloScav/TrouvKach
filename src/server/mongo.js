@@ -3,8 +3,8 @@ const ObjectId = require("mongodb").ObjectID;
 const fetch = require("node-fetch");
 
 //A MODIFIER
-//const url = `mongodb+srv://dev:dev@haerphi-trouvkash-jyzbr.mongodb.net/test?retryWrites=true&w=majority`;
-const url = "mongodb://dev:dev@mongo:27017";
+const url = `mongodb+srv://dev:dev@cluster0-rhjfx.mongodb.net/test?retryWrites=true&w=majority`;
+//const url = "mongodb://dev:dev@mongo:27017";
 
 // Récupère toutes les banques
 export const mongoRequestBanks = async () => {
